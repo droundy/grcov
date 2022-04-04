@@ -21,7 +21,7 @@ export class Grcov {
 
             return new Grcov(path);
         } catch (error) {
-            core.info('grcov is not installed, installing now');
+            core.info('grcov is not yet installed, installing now');
         }
 
         const cargo = await Cargo.get();
