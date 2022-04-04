@@ -99,7 +99,7 @@ Did you forgot to checkout the code first?');
 }
 
 async function loadUser(path: string): Promise<User> {
-    console.log('I am reading the configuration file');
+    core.info('I am reading the configuration file');
     let contents = {};
     try {
         contents = yaml.safeLoad(await fs.readFile(path));
@@ -145,7 +145,7 @@ async function loadUser(path: string): Promise<User> {
         user.exclLine = contents['excl-line'];
     }
     if (contents['excl-start']) {
-        console.log('exclusion starts at', contents['excl-start']);
+        core.info('exclusion starts at', contents['excl-start']);
         user.exclStart = contents['excl-start'];
     }
     if (contents['excl-stop']) {
@@ -158,7 +158,7 @@ async function loadUser(path: string): Promise<User> {
         user.outputPath = contents['output-file'];
     }
 
-    core.debug(`User configuration: ${JSON.stringify(user)}`);
+    core.info(`User configuration: ${JSON.stringify(user)}`);
 
     return user;
 }
